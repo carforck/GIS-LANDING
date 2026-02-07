@@ -1,70 +1,199 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Target, Eye, Users } from "lucide-react";
+
+const tabs = [
+  {
+    id: "mision",
+    label: "Misión",
+    icon: Target,
+    content:
+      "Brindar asesoría y acompañamiento profesional en la gestión de trámites migratorios y administrativos, ofreciendo soluciones confiables, rápidas y personalizadas con atención humana y eficiente.",
+    image: "/2.png", // Imagen Misión
+  },
+  {
+    id: "vision",
+    label: "Visión",
+    icon: Eye,
+    content:
+      "Ser una empresa referente en asesorías migratorias y gestión administrativa, reconocida por su innovación, profesionalismo y compromiso con la satisfacción de nuestros clientes.",
+    image: "/3.png", // Imagen Visión
+  },
+];
 
 export default function QuienesSomos() {
+  const [activeTab, setActiveTab] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Auto-rotate tabs
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      setActiveTab((prev) => (prev + 1) % tabs.length);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
   return (
     <section
       id="quienes-somos"
-      className="relative bg-linear-to-b from-[#1B263B] via-[#415A77] to-[#E0E6ED] text-white py-20 px-6 md:px-12 overflow-hidden"
+      className="relative bg-linear-to-b from-[#1B263B] via-[#415A77] to-[#E0E6ED] text-white py-28 px-6 md:px-12 overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto text-center md:text-left">
-        {/* Título principal */}
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
+      <div className="max-w-7xl mx-auto">
+
+        {/* HEADER */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-extrabold mb-12 text-center md:text-left text-[#A5C8F0]"
+          className="text-center mb-16"
         >
-          ¿Quiénes Somos?
-        </motion.h2>
+          <span className="inline-block text-sm tracking-widest uppercase text-[#A5C8F0]/80 mb-4">
+            Sobre nosotros
+          </span>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-[#A5C8F0] mb-6">
+            ¿Quiénes Somos?
+          </h2>
+          <div className="w-20 h-1 bg-[#A5C8F0] mx-auto rounded-full" />
+        </motion.div>
 
-        {/* Contenido */}
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Texto */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-lg text-gray-100 leading-relaxed mb-6">
-              En <span className="font-semibold text-[#A5C8F0]">GIS Asesorías Migratorias</span>, nos especializamos en brindar acompañamiento integral para trámites legales, migratorios y administrativos. Nuestra filosofía se basa en la empatía, la transparencia y el compromiso con el bienestar de cada cliente.
-            </p>
+        {/* QUIÉNES SOMOS - INFO */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="max-w-4xl mx-auto mb-24 text-center"
+        >
+          <div className="flex justify-center mb-6">
+            <div className="p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
+              <Users size={32} className="text-[#A5C8F0]" />
+            </div>
+          </div>
 
-            {/* Misión */}
-            <div className="mt-8">
-              <h3 className="text-2xl font-bold text-[#A5C8F0] mb-2">Misión</h3>
-              <p className="text-gray-100 leading-relaxed">
-                Brindar asesoría y acompañamiento profesional en la gestión de trámites legales y migratorios, ofreciendo soluciones confiables, rápidas y personalizadas con atención humana y eficiente.
-              </p>
+          <p className="text-lg md:text-xl text-gray-100 leading-relaxed">
+            En{" "}
+            <span className="font-semibold text-[#A5C8F0]">
+              GIS Asesorías Migratorias
+            </span>
+            , nos especializamos en brindar acompañamiento integral para trámites
+            legales, migratorios y administrativos. Nuestra filosofía se basa en
+            la empatía, la transparencia y el compromiso con el bienestar de cada
+            cliente.
+          </p>
+        </motion.div>
+
+        {/* MISION / VISION */}
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
+
+          {/* LEFT: Tabs */}
+          <div>
+            {/* Tab buttons */}
+            <div className="flex gap-6 mb-12 justify-center lg:justify-start">
+              {tabs.map((tab, index) => {
+                const Icon = tab.icon;
+                const isActive = index === activeTab;
+
+                return (
+                  <motion.button
+                    key={tab.id}
+                    onClick={() => {
+                      setActiveTab(index);
+                      setIsPaused(true);
+                    }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`flex items-center gap-3 px-6 py-3 rounded-full font-semibold transition-all relative
+                      ${
+                        isActive
+                          ? "bg-[#A5C8F0] text-[#1B263B] shadow-xl"
+                          : "bg-white/10 text-white hover:bg-white/20"
+                      }`}
+                  >
+                    <motion.span
+                      animate={
+                        isActive
+                          ? { scale: [1, 1.2, 1] }
+                          : { scale: 1 }
+                      }
+                      transition={{
+                        duration: 1.6,
+                        repeat: isActive ? Infinity : 0,
+                      }}
+                    >
+                      <Icon size={20} />
+                    </motion.span>
+
+                    {tab.label}
+
+                    {isActive && (
+                      <motion.span
+                        layoutId="activeIndicator"
+                        className="absolute inset-0 rounded-full ring-2 ring-[#A5C8F0]/40"
+                      />
+                    )}
+                  </motion.button>
+                );
+              })}
             </div>
 
-            {/* Visión */}
-            <div className="mt-8">
-              <h3 className="text-2xl font-bold text-[#A5C8F0] mb-2">Visión</h3>
-              <p className="text-gray-100 leading-relaxed">
-                Ser una empresa referente en asesorías migratorias y gestión administrativa, reconocida por su innovación, profesionalismo y compromiso con la satisfacción de nuestros clientes.
-              </p>
+            {/* Tab content */}
+            <div className="relative bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-10 min-h-[180px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={tabs[activeTab].id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <h3 className="text-2xl font-bold text-[#A5C8F0] mb-4 flex items-center gap-3">
+                    {React.createElement(tabs[activeTab].icon, { size: 26 })}
+                    {tabs[activeTab].label}
+                  </h3>
+                  <p className="text-gray-100 leading-relaxed">
+                    {tabs[activeTab].content}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Imagen */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex justify-center"
-          >
-            <img
-              src="https://images.unsplash.com/photo-1629904853893-c2c8981a1dc5?auto=format&fit=crop&w=800&q=80"
-              alt="Equipo de trabajo profesional colaborando"
-              className="rounded-2xl shadow-2xl w-full max-w-md object-cover hover:scale-105 transition-transform duration-500"
-            />
-          </motion.div>
+          {/* RIGHT: Image synced */}
+          <div className="relative flex justify-center">
+            <div className="relative w-full max-w-lg rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={tabs[activeTab].image}
+                  src={tabs[activeTab].image}
+                  alt={`Imagen ${tabs[activeTab].label}`}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className="w-full h-full object-cover aspect-4/3"
+                />
+              </AnimatePresence>
+
+              <div className="absolute inset-0 bg-linear-to-t from-[#1B263B]/30 to-transparent pointer-events-none" />
+            </div>
+          </div>
         </div>
-      </div>
 
-      {/* Degradado inferior para integración con fondo claro */}
-      <div className="absolute bottom-0 left-0 w-full h-24 bg-linear-to-t from-[#E0E6ED] to-transparent"></div>
+        {/* DISCLAIMER */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-24 text-center text-sm text-gray-300 max-w-4xl mx-auto leading-relaxed"
+        >
+          Este servicio no constituye asesoría legal ni representación ante
+          USCIS o cortes de inmigración. En los casos que requieran asesoría
+          legal, el cliente será referido a un abogado licenciado en los Estados
+          Unidos.
+        </motion.p>
+      </div>
     </section>
   );
 }

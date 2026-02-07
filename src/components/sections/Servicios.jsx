@@ -1,50 +1,57 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FileText, Users, Globe2, Briefcase, ClipboardCheck, Scale } from "lucide-react";
+import {
+  FileText,
+  Users,
+  ClipboardCheck,
+  ShieldCheck,
+  BookOpen,
+  RefreshCcw,
+} from "lucide-react";
 
 export default function Servicios() {
   const servicios = [
     {
-      icon: <FileText className="w-10 h-10 text-[#003366]" />,
-      titulo: "Trámites Legales",
-      descripcion:
-        "Gestión completa de documentos notariales, certificaciones, apostillas y legalizaciones ante entidades oficiales.",
-      img: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      icon: <Globe2 className="w-10 h-10 text-[#003366]" />,
-      titulo: "Asesoría Migratoria",
-      descripcion:
-        "Acompañamos tu proceso de visa, residencia o nacionalización con soluciones seguras y personalizadas.",
-      img: "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      icon: <Briefcase className="w-10 h-10 text-[#003366]" />,
-      titulo: "Gestión Empresarial",
-      descripcion:
-        "Constitución de empresas, actualización de registros y apoyo administrativo para emprendedores y corporaciones.",
-      img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80",
-    },
-    {
       icon: <Users className="w-10 h-10 text-[#003366]" />,
-      titulo: "Asesorías Personalizadas",
+      titulo: "Peticiones Familiares y de Pareja",
       descripcion:
-        "Atención integral con expertos en distintas áreas legales y administrativas, adaptadas a tus necesidades.",
-      img: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
+        "Paquete completo para peticiones familiares y de pareja (I-130 – I-129F), con organización y acompañamiento durante el proceso.",
+    },
+    {
+      icon: <FileText className="w-10 h-10 text-[#003366]" />,
+      titulo: "Ajuste de Estatus",
+      descripcion:
+        "Preparación del paquete de Ajuste de Estatus (I-485), asegurando correcta documentación y orden del caso.",
+    },
+    {
+      icon: <RefreshCcw className="w-10 h-10 text-[#003366]" />,
+      titulo: "Renovaciones Migratorias",
+      descripcion:
+        "Paquetes de renovación de documentos migratorios como I-90 e I-765.",
+    },
+    {
+      icon: <ShieldCheck className="w-10 h-10 text-[#003366]" />,
+      titulo: "Visas Humanitarias",
+      descripcion:
+        "Gestión de paquetes para procesos de Visas Humanitarias: Visa U, Visa T y VAWA.",
     },
     {
       icon: <ClipboardCheck className="w-10 h-10 text-[#003366]" />,
-      titulo: "Trámites Administrativos",
+      titulo: "Organización y Seguimiento del Caso",
       descripcion:
-        "Optimización de procesos institucionales, diligenciamiento y seguimiento ante organismos gubernamentales.",
-      img: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
+        "Organización de evidencias, seguimiento administrativo y acompañamiento paso a paso según instrucciones del cliente o del abogado.",
     },
     {
-      icon: <Scale className="w-10 h-10 text-[#003366]" />,
-      titulo: "Consultoría Legal",
+      icon: <BookOpen className="w-10 h-10 text-[#003366]" />,
+      titulo: "Educación Migratoria",
       descripcion:
-        "Orientación jurídica profesional para resolver conflictos o cumplir con requerimientos legales vigentes.",
-      img: "https://images.unsplash.com/photo-1555374018-13a8994ab246?auto=format&fit=crop&w=800&q=80",
+        "Explicación general de procesos migratorios de forma informativa (no personalizada).",
+    },
+    {
+      icon: <ShieldCheck className="w-10 h-10 text-[#003366]" />,
+      titulo: "Remoción de Condiciones",
+      descripcion:
+        "Paquete para remoción de condiciones de Green Card (I-751).",
     },
   ];
 
@@ -53,45 +60,35 @@ export default function Servicios() {
       id="servicios"
       className="bg-[#E6EEF9] text-[#001F3F] py-20 px-6 md:px-12"
     >
-      <div className="max-w-6xl mx-auto text-center mb-16">
+      <div className="max-w-5xl mx-auto text-center mb-16">
         <motion.h2
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl font-extrabold text-[#003366] mb-4"
         >
-          Nuestros Servicios
+          Servicios Migratorios
         </motion.h2>
-        <p className="text-gray-700 max-w-2xl mx-auto">
-          Ofrecemos soluciones integrales con respaldo profesional, orientadas a
-          simplificar tus procesos legales, administrativos y migratorios.
+        <p className="text-gray-700 max-w-3xl mx-auto">
+          Brindamos apoyo administrativo y organizativo en procesos migratorios,
+          acompañándote paso a paso con información clara y estructurada.
         </p>
       </div>
 
-      {/* GRID DE SERVICIOS */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {servicios.map((servicio, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="bg-white rounded-2xl shadow-lg hover:shadow-2xl overflow-hidden transform hover:-translate-y-2 transition-all duration-300"
+            transition={{ duration: 0.4, delay: index * 0.08 }}
+            className="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 text-center transition-all"
           >
-            <div className="h-48 w-full overflow-hidden">
-              <img
-                src={servicio.img}
-                alt={servicio.titulo}
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-              />
-            </div>
-            <div className="p-6 text-center">
-              <div className="flex justify-center mb-4">{servicio.icon}</div>
-              <h3 className="text-2xl font-semibold text-[#003366] mb-2">
-                {servicio.titulo}
-              </h3>
-              <p className="text-gray-600">{servicio.descripcion}</p>
-            </div>
+            <div className="flex justify-center mb-4">{servicio.icon}</div>
+            <h3 className="text-xl font-semibold text-[#003366] mb-2">
+              {servicio.titulo}
+            </h3>
+            <p className="text-gray-600 text-sm">{servicio.descripcion}</p>
           </motion.div>
         ))}
       </div>
