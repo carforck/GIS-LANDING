@@ -1,20 +1,22 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "../assets/logos/logo1-04.png"; // Ajusta si tu logo cambia
+import logo from "../assets/logos/logo1-04.png";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Navbar() {
+  const { language, toggleLanguage, t } = useLanguage();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("#");
 
   const links = [
-    { name: "Inicio", href: "#hero" },
-    { name: "Quiénes Somos", href: "#quienes-somos" },
-    { name: "Servicios", href: "#servicios" },
-    { name: "Pagos", href: "#pagos" },
-    { name: "Testimonios", href: "#testimonios" },
-    { name: "Contacto", href: "#contacto" },
+    { name: t("navbar.home"), href: "#hero" },
+    { name: t("navbar.about"), href: "#quienes-somos" },
+    { name: t("navbar.services"), href: "#servicios" },
+    { name: t("navbar.payments"), href: "#pagos" },
+    { name: t("navbar.testimonials"), href: "#testimonios" },
+    { name: t("navbar.contact"), href: "#contacto" },
   ];
 
   useEffect(() => {
@@ -41,7 +43,7 @@ export default function Navbar() {
       window.removeEventListener("scroll", handleScroll);
       observer.disconnect();
     };
-  }, []);
+  }, [links]);
 
   return (
     <motion.header
@@ -96,16 +98,26 @@ export default function Navbar() {
         </nav>
 
         {/* BOTÓN DESKTOP */}
-        <a
-          href="#contacto"
-          className={`hidden md:inline-block px-5 py-2 rounded-lg text-sm font-semibold shadow-md transition-all duration-300 ${
-            scrolled
-              ? "bg-[#7EB4E3] hover:bg-[#2F4783] text-[#0F1A30]"
-              : "bg-white text-[#14254A] hover:bg-[#D7E3F4]"
-          }`}
-        >
-          Contáctanos
-        </a>
+        <div className="flex items-center gap-4">
+          <a
+            href="#contacto"
+            className={`hidden md:inline-block px-5 py-2 rounded-lg text-sm font-semibold shadow-md transition-all duration-300 ${
+              scrolled
+                ? "bg-[#7EB4E3] hover:bg-[#2F4783] text-[#0F1A30]"
+                : "bg-white text-[#14254A] hover:bg-[#D7E3F4]"
+            }`}
+          >
+            {t("navbar.contact")}
+          </a>
+
+          {/* BOTÓN CAMBIO DE IDIOMA */}
+          <button
+            onClick={toggleLanguage}
+            className="px-4 py-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition"
+          >
+            {language === "es" ? "EN" : "ES"}
+          </button>
+        </div>
 
         {/* BOTÓN MENÚ MÓVIL */}
         <button
@@ -146,8 +158,16 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 className="bg-[#7EB4E3] hover:bg-[#2F4783] text-[#0F1A30] text-center py-2 rounded-lg font-semibold"
               >
-                Contáctanos
+                {t("navbar.contact")}
               </a>
+
+              {/* BOTÓN CAMBIO DE IDIOMA EN MÓVIL */}
+              <button
+                onClick={toggleLanguage}
+                className="px-4 py-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition"
+              >
+                {language === "es" ? "EN" : "ES"}
+              </button>
             </div>
           </motion.div>
         )}

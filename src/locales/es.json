@@ -1,0 +1,11 @@
+
+{
+  "navbar": {
+    "home": "Inicio",
+    "about": "Quiénes Somos",
+    "services": "Servicios",
+    "payments": "Pagos",
+    "testimonials": "Testimonios",
+    "contact": "Contacto"
+  }
+}

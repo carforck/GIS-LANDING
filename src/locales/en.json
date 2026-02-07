@@ -1,0 +1,11 @@
+
+  {
+    "navbar": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "payments": "Payments",
+    "testimonials": "Testimonials",
+    "contact": "Contact"
+  }
+}

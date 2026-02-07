@@ -5,7 +5,7 @@ import { FaWhatsapp } from "react-icons/fa";
 export default function FloatingWhatsApp() {
   const [visible, setVisible] = useState(false);
 
-  const phoneNumber = "573105080356"; // 
+  const phoneNumber = "573013255256"; //    
   const message = encodeURIComponent(
     "Hola, quiero más información sobre sus servicios migratorios."
   );
