@@ -46,6 +46,8 @@ export default function Footer() {
         </div>
       </div>
 
+      
+
       {/* Línea inferior */}
       <div className="border-t border-white/10 mt-10 pt-6 text-center text-sm text-gray-400">
         © {new Date().getFullYear()} <span className="text-secondary-400 font-semibold">GIS Migration</span>.  

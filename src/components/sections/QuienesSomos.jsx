@@ -9,7 +9,7 @@ const tabs = [
     icon: Target,
     content:
       "Brindar asesoría y acompañamiento profesional en la gestión de trámites migratorios y administrativos, ofreciendo soluciones confiables, rápidas y personalizadas con atención humana y eficiente.",
-    image: "/2.png", // Imagen Misión
+    image: "/4.png", // Imagen Misión
   },
   {
     id: "vision",
@@ -66,11 +66,7 @@ export default function QuienesSomos() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="max-w-4xl mx-auto mb-24 text-center"
         >
-          <div className="flex justify-center mb-6">
-            <div className="p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20">
-              <Users size={32} className="text-[#A5C8F0]" />
-            </div>
-          </div>
+          
 
           <p className="text-lg md:text-xl text-gray-100 leading-relaxed">
             En{" "}
@@ -181,18 +177,7 @@ export default function QuienesSomos() {
           </div>
         </div>
 
-        {/* DISCLAIMER */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-24 text-center text-sm text-gray-300 max-w-4xl mx-auto leading-relaxed"
-        >
-          Este servicio no constituye asesoría legal ni representación ante
-          USCIS o cortes de inmigración. En los casos que requieran asesoría
-          legal, el cliente será referido a un abogado licenciado en los Estados
-          Unidos.
-        </motion.p>
+        
       </div>
     </section>
   );

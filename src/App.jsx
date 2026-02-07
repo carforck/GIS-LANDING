@@ -6,6 +6,7 @@ import Pagos from "./components/sections/Pagos";
 import Testimonios from "./components/sections/Testimonios";
 import Contacto from "./components/sections/Contacto";
 import Footer from "./components/Footer";
+import FloatingWhatsApp from "./components/FloatingWhatsApp";
 export default function App() {
   return (
     <div className="font-sans bg-secondary text-primary-900 overflow-x-hidden">
@@ -45,6 +46,9 @@ export default function App() {
 
       {/* FOOTER */}
       <Footer />
+
+      {/* FLOATING WHATSAPP */}
+      <FloatingWhatsApp />
     </div>
   );
 }
