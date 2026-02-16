@@ -4,31 +4,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import { useLanguage } from "../../i18n/LanguageContext";
 
 export default function Hero() {
-  const slides = [
-    {
-      image:
-        "./1.png", // Imagen para el primer slide (puedes cambiarla por una URL o una imagen local)
-      title: "Asesorías Migratorias y Administrativas",
-      subtitle: "Acompañamiento claro y confiable",
-      text: "Brindamos acompañamiento seguro para la preparación y gestión de trámites migratorios dentro o fuera de los Estados Unidos.",
-    },
-    {
-      image:
-        "./2.png",
-      title: "Gestión Administrativa Eficaz",
-      subtitle: "Te acompañamos en cada paso",
-      text: "Simplificamos la organización de documentos y procesos administrativos relacionados con trámites migratorios, de forma clara y ordenada.",
-    },
-    {
-      image:
-        "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1600&q=80",
-      title: "Atención Profesional y Humana",
-      subtitle: "Más que asesoría, acompañamiento real",
-      text: "En GIS te acompañamos con empatía, transparencia y experiencia para que entiendas cada etapa de tu proceso.",
-    },
-  ];
+  const { t } = useLanguage();
+
+  // 🔥 Ahora los slides vienen del archivo translations
+  const slides = t("hero.slides");
 
   return (
     <section
@@ -43,46 +25,52 @@ export default function Hero() {
         pagination={{ clickable: true }}
         className="w-full h-full"
       >
-        {slides.map((slide, index) => (
-          <SwiperSlide key={index}>
-            <div
-              className="w-full h-full bg-cover bg-center flex items-center justify-center text-center relative"
-              style={{ backgroundImage: `url(${slide.image})` }}
-            >
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-linear-to-r from-[#0D1B2A]/90 via-[#1B263B]/80 to-[#415A77]/70"></div>
+        {slides.map((slide, index) => {
+          // Puedes mantener tus imágenes aquí
+          const images = ["./1.png", "./2.png",
+            "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1600&q=80"
+          ];
 
-              {/* Content */}
-              <div className="relative z-10 max-w-4xl px-6 text-white">
-                <h1 className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight drop-shadow-xl">
-                  {slide.title}
-                </h1>
+          return (
+            <SwiperSlide key={index}>
+              <div
+                className="w-full h-full bg-cover bg-center flex items-center justify-center text-center relative"
+                style={{ backgroundImage: `url(${images[index]})` }}
+              >
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-linear-to-r from-[#0D1B2A]/90 via-[#1B263B]/80 to-[#415A77]/70"></div>
 
-                <h2 className="text-2xl md:text-4xl font-semibold text-[#7BAFD4] mb-3">
-                  {slide.subtitle}
-                </h2>
+                {/* Content */}
+                <div className="relative z-10 max-w-4xl px-6 text-white">
+                  <h1 className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight drop-shadow-xl">
+                    {slide.title}
+                  </h1>
 
-                <p className="text-lg md:text-xl mb-8 text-gray-100 opacity-90 max-w-2xl mx-auto">
-                  {slide.text}
-                </p>
+                  <h2 className="text-2xl md:text-4xl font-semibold text-[#7BAFD4] mb-3">
+                    {slide.subtitle}
+                  </h2>
 
-                {/* CTA */}
-                <a
-                  href="#contacto"
-                  className="inline-block bg-[#415A77] hover:bg-[#1B263B] text-white font-semibold px-10 py-4 rounded-full shadow-md text-lg transition-all duration-300"
-                >
-                  Solicitar información
-                </a>
+                  <p className="text-lg md:text-xl mb-8 text-gray-100 opacity-90 max-w-2xl mx-auto">
+                    {slide.text}
+                  </p>
 
-                {/* Disclaimer corto */}
-                <p className="mt-4 text-xs md:text-sm text-gray-300 opacity-80 max-w-xl mx-auto">
-                  Este servicio no constituye asesoría legal ni representación
-                  jurídica.
-                </p>
+                  {/* CTA */}
+                  <a
+                    href="#contacto"
+                    className="inline-block bg-[#415A77] hover:bg-[#1B263B] text-white font-semibold px-10 py-4 rounded-full shadow-md text-lg transition-all duration-300"
+                  >
+                    {t("hero.button")}
+                  </a>
+
+                  {/* Disclaimer */}
+                  <p className="mt-4 text-xs md:text-sm text-gray-300 opacity-80 max-w-xl mx-auto">
+                    {t("hero.disclaimer")}
+                  </p>
+                </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
 
       {/* Bottom fade */}

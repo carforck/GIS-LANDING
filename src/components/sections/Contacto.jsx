@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Mail, Phone, Instagram, Facebook, Send } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "../../i18n/LanguageContext";
 
 export default function Contacto() {
+  const { t } = useLanguage();
+
   const [formData, setFormData] = useState({
     nombre: "",
     correo: "",
@@ -16,11 +19,11 @@ export default function Contacto() {
     e.preventDefault();
 
     const mensaje = `
-Hola, deseo más información sobre sus servicios.
+${t("contact.subtitle")}
 
-Nombre: ${formData.nombre}
-Correo: ${formData.correo}
-Mensaje: ${formData.mensaje}
+${t("contact.form.name")}: ${formData.nombre}
+${t("contact.form.email")}: ${formData.correo}
+${t("contact.form.message")}: ${formData.mensaje}
     `;
 
     const whatsappURL = `https://wa.me/573013255256?text=${encodeURIComponent(
@@ -38,15 +41,15 @@ Mensaje: ${formData.mensaje}
       className="relative bg-linear-to-b from-primary-900 to-primary-800 py-20 px-6 md:px-12 flex flex-col items-center text-center"
     >
       <h2 className="text-4xl md:text-5xl font-extrabold mb-4 text-primary-100">
-        Contáctanos
+        {t("contact.title")}
       </h2>
+
       <p className="text-primary-200 max-w-3xl mb-14">
-        ¿Tienes dudas o deseas más información? Escríbenos y con gusto te
-        brindaremos orientación clara y acompañamiento administrativo.
+        {t("contact.subtitle")}
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-14 w-full max-w-6xl">
-        {/* IZQUIERDA: INFO */}
+        {/* IZQUIERDA */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -55,22 +58,19 @@ Mensaje: ${formData.mensaje}
         >
           <div className="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-xl">
             <h3 className="text-2xl font-bold text-primary-100 mb-4">
-              Estamos para ayudarte
+              {t("contact.info.title")}
             </h3>
+
             <p className="text-primary-200 leading-relaxed">
-              En <strong>GIS Asesorías Migratorias</strong> ofrecemos
-              acompañamiento informativo y apoyo en la organización de trámites
-              migratorios y administrativos.
+              {t("contact.info.description")}
               <br />
               <br />
               <span className="text-sm opacity-80">
-                Este servicio no constituye asesoría legal ni representación
-                ante USCIS o cortes de inmigración.
+                {t("contact.info.disclaimer")}
               </span>
             </p>
           </div>
 
-          {/* CONTACTO + REDES (mejorado) */}
           <div className="grid gap-4">
             <motion.a
               href="mailto:contacto@gismigration.com"
@@ -120,7 +120,7 @@ Mensaje: ${formData.mensaje}
           </div>
         </motion.div>
 
-        {/* DERECHA: FORMULARIO */}
+        {/* FORMULARIO */}
         <motion.form
           onSubmit={handleSubmit}
           initial={{ opacity: 0, x: 40 }}
@@ -131,7 +131,7 @@ Mensaje: ${formData.mensaje}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="block mb-2 text-primary-100 font-medium">
-                Nombre
+                {t("contact.form.name")}
               </label>
               <input
                 type="text"
@@ -139,14 +139,14 @@ Mensaje: ${formData.mensaje}
                 value={formData.nombre}
                 onChange={handleChange}
                 required
-                placeholder="Tu nombre"
+                placeholder={t("contact.form.name")}
                 className="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-primary-100 placeholder-primary-200 focus:ring-2 focus:ring-primary-400 outline-none"
               />
             </div>
 
             <div>
               <label className="block mb-2 text-primary-100 font-medium">
-                Correo electrónico
+                {t("contact.form.email")}
               </label>
               <input
                 type="email"
@@ -154,7 +154,7 @@ Mensaje: ${formData.mensaje}
                 value={formData.correo}
                 onChange={handleChange}
                 required
-                placeholder="tu@correo.com"
+                placeholder={t("contact.form.email")}
                 className="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-primary-100 placeholder-primary-200 focus:ring-2 focus:ring-primary-400 outline-none"
               />
             </div>
@@ -162,7 +162,7 @@ Mensaje: ${formData.mensaje}
 
           <div>
             <label className="block mb-2 text-primary-100 font-medium">
-              Mensaje
+              {t("contact.form.message")}
             </label>
             <textarea
               name="mensaje"
@@ -170,7 +170,7 @@ Mensaje: ${formData.mensaje}
               value={formData.mensaje}
               onChange={handleChange}
               required
-              placeholder="Cuéntanos en qué podemos orientarte..."
+              placeholder={t("contact.form.message")}
               className="w-full px-4 py-3 rounded-xl bg-white/20 border border-white/30 text-primary-100 placeholder-primary-200 focus:ring-2 focus:ring-primary-400 outline-none"
             />
           </div>
@@ -180,7 +180,7 @@ Mensaje: ${formData.mensaje}
             className="w-full flex items-center justify-center gap-3 bg-linear-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold py-3 rounded-2xl transition transform hover:scale-105"
           >
             <Send size={20} />
-            Enviar por WhatsApp
+            {t("contact.form.send")}
           </button>
         </motion.form>
       </div>

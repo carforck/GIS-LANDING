@@ -9,14 +9,19 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("#");
+  const flagES = "https://flagcdn.com/w40/es.png";
+  const flagUS = "https://flagcdn.com/w40/us.png";
 
+useEffect(() => {
+  console.log("Idioma actual:", language);
+}, [language]);
   const links = [
     { name: t("navbar.home"), href: "#hero" },
     { name: t("navbar.about"), href: "#quienes-somos" },
     { name: t("navbar.services"), href: "#servicios" },
     { name: t("navbar.payments"), href: "#pagos" },
     { name: t("navbar.testimonials"), href: "#testimonios" },
-    { name: t("navbar.contact"), href: "#contacto" },
+    
   ];
 
   useEffect(() => {
@@ -111,13 +116,30 @@ export default function Navbar() {
           </a>
 
           {/* BOTÓN CAMBIO DE IDIOMA */}
-          <button
-            onClick={toggleLanguage}
-            className="px-4 py-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition"
-          >
-            {language === "es" ? "EN" : "ES"}
-          </button>
-        </div>
+<motion.button
+  onClick={toggleLanguage}
+  whileTap={{ scale: 0.9 }}
+  whileHover={{ scale: 1.05 }}
+  className="
+    relative flex items-center justify-center
+    w-11 h-11 rounded-full
+    bg-white/10 backdrop-blur-md
+    border border-white/20
+    hover:bg-white/20
+    transition-all duration-300
+  "
+>
+  <motion.img
+    key={language}
+    src={language === "es" ? flagES : flagUS}
+    alt="Language flag"
+    initial={{ rotateY: 90, opacity: 0 }}
+    animate={{ rotateY: 0, opacity: 1 }}
+    exit={{ rotateY: -90, opacity: 0 }}
+    transition={{ duration: 0.3 }}
+    className="w-6 h-6 rounded-full object-cover shadow-md"
+  />
+</motion.button>
 
         {/* BOTÓN MENÚ MÓVIL */}
         <button
@@ -172,6 +194,7 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+      </div>
     </motion.header>
   );
 }

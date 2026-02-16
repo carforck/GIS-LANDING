@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function FloatingWhatsApp() {
   const [visible, setVisible] = useState(false);
+  const { t } = useLanguage();
 
-  const phoneNumber = "573013255256"; //    
-  const message = encodeURIComponent(
-    "Hola, quiero más información sobre sus servicios migratorios."
-  );
+  const phoneNumber = "573013255256";
+
+  // Obtener mensaje traducido
+  const message = useMemo(() => {
+    return encodeURIComponent(t("whatsapp.message"));
+  }, [t]);
 
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
@@ -43,7 +47,7 @@ export default function FloatingWhatsApp() {
               whitespace-nowrap shadow-xl
             "
           >
-            Solicitar más información
+            {t("whatsapp.tooltip")}
           </div>
 
           {/* Botón */}

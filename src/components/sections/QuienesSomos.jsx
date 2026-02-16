@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Target, Eye, Users } from "lucide-react";
-
-const tabs = [
-  {
-    id: "mision",
-    label: "Misión",
-    icon: Target,
-    content:
-      "Brindar asesoría y acompañamiento profesional en la gestión de trámites migratorios y administrativos, ofreciendo soluciones confiables, rápidas y personalizadas con atención humana y eficiente.",
-    image: "/4.png", // Imagen Misión
-  },
-  {
-    id: "vision",
-    label: "Visión",
-    icon: Eye,
-    content:
-      "Ser una empresa referente en asesorías migratorias y gestión administrativa, reconocida por su innovación, profesionalismo y compromiso con la satisfacción de nuestros clientes.",
-    image: "/3.png", // Imagen Visión
-  },
-];
+import { Target, Eye } from "lucide-react";
+import { useLanguage } from "../../i18n/LanguageContext";
 
 export default function QuienesSomos() {
+  const { t } = useLanguage();
+
   const [activeTab, setActiveTab] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+
+  // 🔥 Tabs ahora vienen del translations
+  const tabs = [
+    {
+      id: "mision",
+      label: t("about.tabs.mission.label"),
+      icon: Target,
+      content: t("about.tabs.mission.content"),
+      image: "/4.png",
+    },
+    {
+      id: "vision",
+      label: t("about.tabs.vision.label"),
+      icon: Eye,
+      content: t("about.tabs.vision.content"),
+      image: "/3.png",
+    },
+  ];
 
   // Auto-rotate tabs
   useEffect(() => {
@@ -34,7 +36,7 @@ export default function QuienesSomos() {
     }, 6000);
 
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, [isPaused, tabs.length]);
 
   return (
     <section
@@ -51,41 +53,33 @@ export default function QuienesSomos() {
           className="text-center mb-16"
         >
           <span className="inline-block text-sm tracking-widest uppercase text-[#A5C8F0]/80 mb-4">
-            Sobre nosotros
+            {t("about.badge")}
           </span>
+
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#A5C8F0] mb-6">
-            ¿Quiénes Somos?
+            {t("about.title")}
           </h2>
+
           <div className="w-20 h-1 bg-[#A5C8F0] mx-auto rounded-full" />
         </motion.div>
 
-        {/* QUIÉNES SOMOS - INFO */}
+        {/* DESCRIPCIÓN */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="max-w-4xl mx-auto mb-24 text-center"
         >
-          
-
           <p className="text-lg md:text-xl text-gray-100 leading-relaxed">
-            En{" "}
-            <span className="font-semibold text-[#A5C8F0]">
-              GIS Asesorías Migratorias
-            </span>
-            , nos especializamos en brindar acompañamiento integral para trámites
-            legales, migratorios y administrativos. Nuestra filosofía se basa en
-            la empatía, la transparencia y el compromiso con el bienestar de cada
-            cliente.
+            {t("about.description")}
           </p>
         </motion.div>
 
         {/* MISION / VISION */}
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
 
-          {/* LEFT: Tabs */}
+          {/* LEFT */}
           <div>
-            {/* Tab buttons */}
             <div className="flex gap-6 mb-12 justify-center lg:justify-start">
               {tabs.map((tab, index) => {
                 const Icon = tab.icon;
@@ -107,20 +101,7 @@ export default function QuienesSomos() {
                           : "bg-white/10 text-white hover:bg-white/20"
                       }`}
                   >
-                    <motion.span
-                      animate={
-                        isActive
-                          ? { scale: [1, 1.2, 1] }
-                          : { scale: 1 }
-                      }
-                      transition={{
-                        duration: 1.6,
-                        repeat: isActive ? Infinity : 0,
-                      }}
-                    >
-                      <Icon size={20} />
-                    </motion.span>
-
+                    <Icon size={20} />
                     {tab.label}
 
                     {isActive && (
@@ -134,7 +115,7 @@ export default function QuienesSomos() {
               })}
             </div>
 
-            {/* Tab content */}
+            {/* CONTENT */}
             <div className="relative bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-10 min-h-[180px]">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -148,6 +129,7 @@ export default function QuienesSomos() {
                     {React.createElement(tabs[activeTab].icon, { size: 26 })}
                     {tabs[activeTab].label}
                   </h3>
+
                   <p className="text-gray-100 leading-relaxed">
                     {tabs[activeTab].content}
                   </p>
@@ -156,14 +138,14 @@ export default function QuienesSomos() {
             </div>
           </div>
 
-          {/* RIGHT: Image synced */}
+          {/* RIGHT IMAGE */}
           <div className="relative flex justify-center">
             <div className="relative w-full max-w-lg rounded-3xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={tabs[activeTab].image}
                   src={tabs[activeTab].image}
-                  alt={`Imagen ${tabs[activeTab].label}`}
+                  alt={tabs[activeTab].label}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
@@ -177,7 +159,6 @@ export default function QuienesSomos() {
           </div>
         </div>
 
-        
       </div>
     </section>
   );
