@@ -26,7 +26,7 @@ ${t("contact.form.email")}: ${formData.correo}
 ${t("contact.form.message")}: ${formData.mensaje}
     `;
 
-    const whatsappURL = `https://wa.me/573013255256?text=${encodeURIComponent(
+    const whatsappURL = `https://wa.me/573002712449?text=${encodeURIComponent(
       mensaje
     )}`;
 
@@ -73,18 +73,18 @@ ${t("contact.form.message")}: ${formData.mensaje}
 
           <div className="grid gap-4">
             <motion.a
-              href="mailto:contacto@gismigration.com"
+              href="mailto:gestores@losgestores.com"
               whileHover={{ scale: 1.03 }}
               className="flex items-center gap-4 p-4 rounded-2xl bg-white/10 border border-white/20 hover:bg-white/20 transition"
             >
               <Mail className="text-primary-300 w-6 h-6" />
               <span className="text-primary-100 font-medium">
-                contacto@gismigration.com
+                gestores@losgestores.com
               </span>
             </motion.a>
 
             <motion.a
-              href="https://wa.me/573105080356"
+              href="https://wa.me/573002712449"
               target="_blank"
               rel="noreferrer"
               whileHover={{ scale: 1.03 }}
@@ -92,30 +92,27 @@ ${t("contact.form.message")}: ${formData.mensaje}
             >
               <Phone className="text-green-400 w-6 h-6" />
               <span className="text-primary-100 font-medium">
-                +57 301 325 5256
+                +57 300 2712 449
               </span>
             </motion.a>
 
             <div className="flex gap-4 pt-4">
               <motion.a
-                href="https://instagram.com"
+                href="https://www.instagram.com/los_gestores?igsh=dHRqM3V2Znd4emdj"
                 target="_blank"
                 rel="noreferrer"
-                whileHover={{ scale: 1.15 }}
-                className="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 border border-white/20 hover:bg-pink-500/20 transition"
+                whileHover={{ scale: 1.05 }}
+                className="flex items-center gap-3 px-4 h-12 rounded-full 
+                bg-white/20 border border-white/30 
+                hover:bg-pink-500/30 transition"
               >
-                <Instagram className="text-primary-100" />
+                <Instagram className="text-pink-400 w-5 h-5" />
+                <span className="text-primary-100 font-semibold">
+                  @los_gestores
+                </span>
               </motion.a>
 
-              <motion.a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noreferrer"
-                whileHover={{ scale: 1.15 }}
-                className="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 border border-white/20 hover:bg-blue-500/20 transition"
-              >
-                <Facebook className="text-primary-100" />
-              </motion.a>
+              
             </div>
           </div>
         </motion.div>

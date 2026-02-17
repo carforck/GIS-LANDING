@@ -64,7 +64,7 @@ export default function Footer() {
             </li>
             <li className="flex items-center gap-2">
               <Mail size={16} className="text-secondary-400" />
-              contacto@gismigration.com
+              gestores@losgestores.com
             </li>
           </ul>
 

@@ -1,12 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { CreditCard, Wallet, Info, Banknote } from "lucide-react";
+import { CreditCard, Info, Banknote } from "lucide-react";
 import { useLanguage } from "../../i18n/LanguageContext";
 
-
-
 export default function Pagos() {
-
   const { t } = useLanguage();
 
   return (
@@ -31,59 +28,47 @@ export default function Pagos() {
       </div>
 
       {/* MÉTODOS DE PAGO */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-
-        {/* MÉTODO 1 */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto justify-items-center">
+        
+        {/* MÉTODO 1 - BANCO */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-t-4 border-[#45C93E]"
+          className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl 
+          transition-all duration-300 border-t-4 border-[#45C93E] 
+          w-full max-w-md text-center"
         >
           <CreditCard className="text-[#003366] w-12 h-12 mb-4 mx-auto" />
-          <h3 className="text-xl font-bold text-[#003366] mb-3 text-center">
+          <h3 className="text-xl font-bold text-[#003366] mb-3">
             {t("payments.bank")}
           </h3>
-          <p className="text-gray-600 mb-4 text-center">
+          <p className="text-gray-600 mb-4">
             {t("payments.bankDescription")}
           </p>
         </motion.div>
 
-        {/* MÉTODO 2 */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-t-4 border-[#45C93E]"
-        >
-          <Wallet className="text-[#003366] w-12 h-12 mb-4 mx-auto" />
-          <h3 className="text-xl font-bold text-[#003366] mb-3 text-center">
-            {t("payments.cash")}
-          </h3>
-          <p className="text-gray-600 mb-4 text-center">
-            {t("payments.cashDescription")}
-          </p>
-        </motion.div>
-
-        {/* MÉTODO 3 */}
+        {/* MÉTODO 2 - INTERNACIONAL */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border-t-4 border-[#45C93E]"
+          className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl 
+          transition-all duration-300 border-t-4 border-[#45C93E] 
+          w-full max-w-md text-center"
         >
           <Banknote className="text-[#003366] w-12 h-12 mb-4 mx-auto" />
-          <h3 className="text-xl font-bold text-[#003366] mb-3 text-center">
+          <h3 className="text-xl font-bold text-[#003366] mb-3">
             {t("payments.international")}
           </h3>
-          <p className="text-gray-600 mb-4 text-center">
+          <p className="text-gray-600 mb-4">
             {t("payments.internationalDescription")}
           </p>
         </motion.div>
 
       </div>
 
-      {/* ⚠️ AVISO IMPORTANTE FUERTE */}
+      {/* ⚠️ AVISO IMPORTANTE */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -116,7 +101,6 @@ export default function Pagos() {
           </div>
         </div>
       </motion.div>
-
     </section>
   );
 }
