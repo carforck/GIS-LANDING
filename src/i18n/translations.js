@@ -40,7 +40,7 @@ export const translations = {
       badge: "Sobre nosotros",
       title: "¿Quiénes Somos?",
       description:
-        "En GIS Asesorías Migratorias brindamos acompañamiento integral en trámites migratorios y administrativos con empatía, transparencia y compromiso.",
+        "En Gestores Immigration Services brindamos acompañamiento integral en trámites migratorios y administrativos con empatía, transparencia y compromiso.",
       tabs: {
         mission: {
           label: "Misión",
@@ -78,7 +78,7 @@ export const translations = {
         },
         {
           title: "Remoción de Condiciones",
-          description: "I-751.",
+          description: "I-751, Petición para Cancelar las Condiciones en la Residencia.",
         },
       ],
     },
@@ -208,7 +208,7 @@ export const translations = {
       badge: "About Us",
       title: "Who We Are",
       description:
-        "GIS Immigration Consulting provides comprehensive support in immigration and administrative processes.",
+        "At Gestores Immigration Services, we provide comprehensive support in immigration and administrative procedures with empathy, transparency, and commitment.",
       tabs: {
         mission: {
           label: "Mission",
@@ -232,7 +232,7 @@ export const translations = {
         { title: "Adjustment of Status", description: "I-485 package preparation." },
         { title: "Renewals", description: "I-90 and I-765." },
         { title: "Humanitarian Visas", description: "U Visa, T Visa, VAWA." },
-        { title: "Removal of Conditions", description: "I-751." },
+        { title: "Removal of Conditions", description: "I-751, Petition to Remove Conditions on Residence.." },
       ],
     },
 
