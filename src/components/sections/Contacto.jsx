@@ -26,7 +26,7 @@ ${t("contact.form.email")}: ${formData.correo}
 ${t("contact.form.message")}: ${formData.mensaje}
     `;
 
-    const whatsappURL = `https://wa.me/573002712449?text=${encodeURIComponent(
+    const whatsappURL = `https://wa.me/57?text=${encodeURIComponent(
       mensaje
     )}`;
 
@@ -84,7 +84,7 @@ ${t("contact.form.message")}: ${formData.mensaje}
             </motion.a>
 
             <motion.a
-              href="https://wa.me/573002712449"
+              href="https://wa.me/57"
               target="_blank"
               rel="noreferrer"
               whileHover={{ scale: 1.03 }}
@@ -92,7 +92,7 @@ ${t("contact.form.message")}: ${formData.mensaje}
             >
               <Phone className="text-green-400 w-6 h-6" />
               <span className="text-primary-100 font-medium">
-                +57 300 2712 449
+                 Próximamente...
               </span>
             </motion.a>
 

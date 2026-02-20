@@ -91,7 +91,7 @@ export default function Pagos() {
             </p>
 
             <a
-              href="https://wa.me/573013255256"
+              href="https://wa.me/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block mt-5 bg-[#45C93E] text-white px-6 py-3 rounded-xl font-semibold hover:bg-green-600 transition-all duration-300"

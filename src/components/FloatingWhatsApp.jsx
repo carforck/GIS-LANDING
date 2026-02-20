@@ -7,7 +7,7 @@ export default function FloatingWhatsApp() {
   const [visible, setVisible] = useState(false);
   const { t } = useLanguage();
 
-  const phoneNumber = "573002712449"; // Cambia al número de teléfono correcto
+  const phoneNumber = "57"; // Cambia al número de teléfono correcto
 
   // Obtener mensaje traducido
   const message = useMemo(() => {
