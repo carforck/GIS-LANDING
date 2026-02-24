@@ -22,14 +22,12 @@ export default function Hero() {
       id="hero"
       className="relative w-full h-[90vh] md:h-[95vh] overflow-hidden"
     >
-      {/* ✅ H1 SEO PRINCIPAL (SOLO UNO EN TODA LA LANDING) */}
-      <div className="absolute top-0 left-0 w-full text-center z-20 pt-28 px-6">
-        <h1 className="text-4xl md:text-6xl font-extrabold text-white drop-shadow-xl leading-tight">
-          {language === "es"
-            ? "Asesoría Migratoria Profesional en Estados Unidos"
-            : "Professional Immigration Consulting in the United States"}
-        </h1>
-      </div>
+      {/* ✅ H1 SOLO PARA SEO (OCULTO VISUALMENTE) */}
+      <h1 className="sr-only">
+        {language === "es"
+          ? "Asesoría Migratoria Profesional en Estados Unidos | Trámites I-751, Residencia y Ciudadanía | GIS Migration"
+          : "Professional Immigration Consulting in the United States | I-751, Residency and Citizenship | GIS Migration"}
+      </h1>
 
       <Swiper
         modules={[Autoplay, Pagination]}
@@ -49,23 +47,21 @@ export default function Hero() {
               <div className="absolute inset-0 bg-linear-to-r from-[#0D1B2A]/90 via-[#1B263B]/80 to-[#415A77]/70"></div>
 
               {/* Content */}
-              <div className="relative z-10 max-w-4xl px-6 text-white mt-24">
+              <div className="relative z-10 max-w-5xl px-6 text-white mt-24">
                 
-                {/* 🔥 Ahora es H2 (ya no H1) */}
-                <h2 className="text-2xl md:text-4xl font-semibold text-[#7BAFD4] mb-3">
-                  {slide.title}
-                </h2>
+                {/* 🔥 H2 GRANDE Y RESPONSIVE */}
+                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#7BAFD4] mb-5 leading-tight tracking-normal">
+                {slide.title}
+              </h2>
 
-                {/* H3 opcional */}
-                <h3 className="text-xl md:text-2xl font-medium mb-4">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-medium mb-4">
                   {slide.subtitle}
                 </h3>
 
-                <p className="text-lg md:text-xl mb-8 text-gray-100 opacity-90 max-w-2xl mx-auto">
+                <p className="text-base sm:text-lg md:text-xl mb-8 text-gray-100 opacity-90 max-w-2xl mx-auto">
                   {slide.text}
                 </p>
 
-                {/* CTA */}
                 <a
                   href="#contacto"
                   className="inline-block bg-[#415A77] hover:bg-[#1B263B] text-white font-semibold px-10 py-4 rounded-full shadow-md text-lg transition-all duration-300"
@@ -73,7 +69,6 @@ export default function Hero() {
                   {t("hero.button")}
                 </a>
 
-                {/* Disclaimer */}
                 <p className="mt-4 text-xs md:text-sm text-gray-300 opacity-80 max-w-xl mx-auto">
                   {t("hero.disclaimer")}
                 </p>
